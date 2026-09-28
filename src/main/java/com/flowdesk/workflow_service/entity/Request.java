@@ -17,6 +17,12 @@ public class Request {
     @Column(nullable = false, length = 1000)
     private String description;
 
+    @Column(nullable = false)
+    private Double amount;
+
+    @Column(name = "quotation_url")
+    private String quotationUrl;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private RequestStatus status;
@@ -39,9 +45,10 @@ public class Request {
     public Request() {
     }
 
-    public Request(String title, String description, User requester) {
+    public Request(String title, String description, Double amount, User requester) {
         this.title = title;
         this.description = description;
+        this.amount = amount;
         this.requester = requester;
         this.status = RequestStatus.PENDING;
     }
@@ -81,6 +88,22 @@ public class Request {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public String getQuotationUrl() {
+        return quotationUrl;
+    }
+
+    public void setQuotationUrl(String quotationUrl) {
+        this.quotationUrl = quotationUrl;
     }
 
     public RequestStatus getStatus() {
